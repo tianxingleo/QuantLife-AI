@@ -14,6 +14,16 @@
 - [4. 案例演示：2025届新生的财富推演](https://www.google.com/search?q=%234-案例演示2025届新生的财富推演)
 - [5. 实时与历史分析](https://www.google.com/search?q=%235-实时与历史分析)
 
+
+
+## Demo示例：
+
+![](https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_11_ab5a772c5e40e366272d4756526db682.webp)
+
+![](https://pub-f8d3afa0c3274f1e943ee2f8c45dff96.r2.dev/25_11_12ac4fae8bebd13017930d4a0ac723d6.webp)
+
+
+
 ## 1. 项目简介
 
 **ScholarQuant** 是一个专为大学生设计的金融数学建模与可视化工具。它旨在解决“在有限的大学四年里，如何平衡投资波动与生活开销”这一核心难题。
