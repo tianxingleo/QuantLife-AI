@@ -57,8 +57,8 @@ class DataLoader:
             # 合并数据
             df = pd.DataFrame({
                 'Date': gold_pct.index,
-                'Gold_Pct_Change': gold_pct.values,
-                'Nasdaq_Pct_Change': nasdaq_pct.values
+                'Gold_Pct_Change': gold_pct.values.flatten(),
+                'Nasdaq_Pct_Change': nasdaq_pct.values.flatten()
             })
             
             # 删除第一行(NaN)
@@ -66,14 +66,14 @@ class DataLoader:
             
             # 保存到CSV
             df.to_csv(self.cache_file, index=False)
-            print(f"✅ 数据已保存至 {self.cache_file}")
-            print(f"📊 数据范围: {df['Date'].min()} 至 {df['Date'].max()}")
-            print(f"📈 总计 {len(df)} 个月的数据")
+            print(f"[Success] 数据已保存至 {self.cache_file}")
+            print(f"[Info] 数据范围: {df['Date'].min()} 至 {df['Date'].max()}")
+            print(f"[Info] 总计 {len(df)} 个月的数据")
             
             return df
             
         except Exception as e:
-            print(f"❌ 数据获取失败: {e}")
+            print(f"[Error] 数据获取失败: {e}")
             return None
     
     def load_cached_data(self) -> pd.DataFrame:
@@ -83,7 +83,7 @@ class DataLoader:
             df['Date'] = pd.to_datetime(df['Date'])
             return df
         else:
-            print("⚠️  未找到缓存数据,正在获取...")
+            print("[Warning] 未找到缓存数据,正在获取...")
             return self.fetch_and_process_data()
     
     def get_statistics(self) -> dict:
@@ -118,6 +118,6 @@ if __name__ == "__main__":
     # 显示统计信息
     if df is not None:
         stats = loader.get_statistics()
-        print("\n📊 统计信息:")
+        print("\n[Stats] 统计信息:")
         print(f"黄金 - 均值: {stats['gold']['mean']:.4f}, 25%分位: {stats['gold']['p25']:.4f}, 75%分位: {stats['gold']['p75']:.4f}")
         print(f"纳斯达克 - 均值: {stats['nasdaq']['mean']:.4f}, 25%分位: {stats['nasdaq']['p25']:.4f}, 75%分位: {stats['nasdaq']['p75']:.4f}")
